@@ -7,7 +7,9 @@ RUN npm ci
 
 COPY . .
 
-ENV NEXT_PUBLIC_API_URL=http://82.146.59.158/api
+ARG NEXT_PUBLIC_API_URL=http://82.146.59.158/api
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 RUN npm run build
 
 FROM node:18-alpine
@@ -15,7 +17,9 @@ FROM node:18-alpine
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV NEXT_PUBLIC_API_URL=http://82.146.59.158/api
+
+ARG NEXT_PUBLIC_API_URL=http://82.146.59.158/api
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
 COPY package*.json ./
 RUN npm ci --only=production
