@@ -108,7 +108,8 @@ export default function CatalogueClient({
 
 		try {
 			const perPage = 30
-			let url = `http://localhost:3001/products?take=${perPage}&page=${pageNum}`
+			const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+			let url = `${apiUrl}/products?take=${perPage}&page=${pageNum}`
 			if (categoryId) url += `&categoryId=${categoryId}`
 			if (search) url += `&search=${encodeURIComponent(search)}`
 

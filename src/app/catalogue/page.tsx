@@ -5,7 +5,8 @@ export const dynamic = 'force-dynamic'
 async function getProducts() {
 	console.log('[Catalogue] Fetching products from API...')
 	try {
-		const url = 'http://localhost:3001/products?take=30&page=1'
+		const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+		const url = `${apiUrl}/products?take=30&page=1`
 		console.log('[Catalogue] URL:', url)
 		const res = await fetch(url, {
 			cache: 'no-store',
@@ -34,7 +35,8 @@ async function getProducts() {
 async function getCategories() {
 	console.log('[Catalogue] Fetching categories from API...')
 	try {
-		const res = await fetch('http://localhost:3001/categories', {
+		const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+		const res = await fetch(`${apiUrl}/categories`, {
 			cache: 'no-store',
 		})
 		console.log('[Catalogue] Categories response status:', res.status)
