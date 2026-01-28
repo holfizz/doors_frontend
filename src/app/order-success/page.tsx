@@ -2,8 +2,9 @@
 
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
-export default function OrderSuccessPage() {
+function OrderSuccessContent() {
 	const searchParams = useSearchParams()
 	const orderNumber = searchParams.get('orderNumber')
 
@@ -36,5 +37,19 @@ export default function OrderSuccessPage() {
 				</div>
 			</div>
 		</div>
+	)
+}
+
+export default function OrderSuccessPage() {
+	return (
+		<Suspense
+			fallback={
+				<div className='container mx-auto px-4 py-16 text-center'>
+					Загрузка...
+				</div>
+			}
+		>
+			<OrderSuccessContent />
+		</Suspense>
 	)
 }

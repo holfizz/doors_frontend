@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 
 export default function AdminOrdersPage() {
-	const [orders, setOrders] = useState([])
+	const [orders, setOrders] = useState<any[]>([])
 
 	useEffect(() => {
 		// TODO: Добавить авторизацию

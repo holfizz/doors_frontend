@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 async function getCategories() {
 	console.log('[Home] Fetching categories from API...')
 	try {

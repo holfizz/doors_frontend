@@ -1,5 +1,7 @@
 import CatalogueClient from '@/components/CatalogueClient'
 
+export const dynamic = 'force-dynamic'
+
 async function getProducts() {
 	console.log('[Catalogue] Fetching products from API...')
 	try {

@@ -3,17 +3,22 @@
 import { createOrder } from '@/lib/api'
 import { useCartStore } from '@/store/cart'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function CheckoutPage() {
 	const router = useRouter()
 	const { items, total, clearCart } = useCartStore()
 	const [loading, setLoading] = useState(false)
+	const [mounted, setMounted] = useState(false)
 	const [formData, setFormData] = useState({
 		customerName: '',
 		customerEmail: '',
 		customerPhone: '',
 	})
+
+	useEffect(() => {
+		setMounted(true)
+	}, [])
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
@@ -38,6 +43,10 @@ export default function CheckoutPage() {
 		} finally {
 			setLoading(false)
 		}
+	}
+
+	if (!mounted) {
+		return null
 	}
 
 	if (items.length === 0) {

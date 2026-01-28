@@ -124,11 +124,12 @@ export default function ProductCard({ product }: { product: Product }) {
 					<div className='mb-5'>
 						{hasDiscount && (
 							<p className='text-sm text-gray-400 line-through mb-1'>
-								{parseFloat(product.basePrice).toLocaleString('ru-RU')} ₽
+								{parseFloat(String(product.basePrice)).toLocaleString('ru-RU')}{' '}
+								₽
 							</p>
 						)}
 						<p className='text-2xl font-bold text-gray-900'>
-							{parseFloat(product.retailPrice).toLocaleString('ru-RU')}{' '}
+							{parseFloat(String(product.retailPrice)).toLocaleString('ru-RU')}{' '}
 							<span className='text-sm font-normal text-gray-500'>₽</span>
 						</p>
 					</div>
